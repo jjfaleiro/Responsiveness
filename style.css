@@ -1,0 +1,251 @@
+/*ATENÇÃO !!! Mobile first = ou seja é uma boa prática começar pelo mobile - pois a leitura do html é em coluna, uma linha em baixo da outra*/
+/*REM = Root EM = Unidade de medida relativa - :root {1rem = 16px (unidade de medida fixa do navegador}
+ATENÇÃO - Nunca utilizar unidade de medida fixa é uma boa prática de responsividade*/
+/*400 (regular) - 700 (bold) - 800 (Extrabold)*/
+/*letter-spacing: 3px; Espaçamento entre letras*/
+/*color: rgba(10, 0, 57, 0.64); 0.64 = 64% de opacidade color: #0a0039; opacity: 64%;
+IMPORTANTE - é interessante frisar que o safari navagedor do IPHONE/MAC, não interpreta algumas codificações do html sem utilizar algums especificações !!!, é importante para o programador se atentar a isso*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%; /*10px = ou seja, assim substituimos os calculos do Xpx / 16 por Xpx / 10px - Importante lembrar !!! que esta sudoclass :root ela altera a raiz de todo o código em relação a página, então é importante reconfigurar o tamanha da fonte para 16px = 1.6 rem no body, para que ele fique responsivo*/
+}
+
+body {
+  background: #ece9fd;
+
+  padding: 6rem 2.3rem 6.6rem;
+
+  font-size: 1.6rem; /*Alteração importante para o sudoclass root para definir que o padrão de font-size da página é 16px ou seja 1.6rem*/
+
+  font-family: 'Epilogue', sans-serif;
+}
+
+main {
+  max-width: 33rem; /*Largura maxima, ou seja estipula um limite maximo, e não minimo, pois quando chegar nos 33rem, ele não aumenta mais, porem pode ficar menor comprimindo os itens*/
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 4rem; /*Utilizando a unidade de medida relativa pegamos os 40px fixos e dividimos por 16 (unidade de medida fixa de fonte nos navegadores normalmente assim tornamos a fonte responsiva ao pegar o resultado = 2.5 rem) se verificar no DevTools o própio navegador faz os calculos*/
+  font-weight: 800;
+  line-height: 4.8rem;
+
+  color: #090039;
+
+  margin-bottom: 1.5rem;
+}
+
+p:first-child {
+  /*A primeira tag p*/
+  font-weight: 400;
+  /*font-size: 1.6rem; mesmo do body*/
+  line-height: 3.2rem;
+
+  letter-spacing: 3px; /*Quando o tamanho é inferior a 4px, é interessante deixar em px, pois não fará muita diferença visual para a pessoas, e deixará o layout um pouco mais coerente*/
+  text-transform: uppercase;
+
+  color: #7158ef;
+
+  margin-bottom: 1.7rem;
+}
+
+h1 + p {
+  /*Pegar o p anterior ao h1*/
+
+  line-height: 3.2rem;
+
+  color: rgba(10, 0, 57, 0.64);
+
+  margin-bottom: 3.2rem;
+}
+
+a {
+  line-height: 3.2rem;
+
+  text-decoration: none;
+  color: #090039;
+}
+
+a:hover {
+  color: #7158ef;
+  font-weight: bold;
+}
+
+ul {
+  margin-top: 7.2rem;
+
+  list-style: none;
+}
+
+ul li {
+  max-width: 33rem;
+
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+
+  color: #090039;
+
+  display: flex; /*O align-items inicial é flex-start ou seja alinha os itens pelo topo*/
+  align-items: center;
+  gap: 3.8rem;
+}
+
+ul li + li {
+  /*Todo li que tenha anterio a ele um li*/
+  margin-top: 3.2rem;
+}
+
+ul li span {
+  width: 4.7rem;
+  height: 8rem;
+  font-weight: 800;
+  font-size: 7.2rem;
+  line-height: 8rem;
+
+  letter-spacing: -2px; /*Quando o tamanho é inferior a 4px, é interessante deixar em px, pois não fará muita diferença visual para a pessoas, e deixará o layout mais coerente*/
+
+  color: #090039;
+}
+/*Media queries
+Faz os ajustes do tamanho da nossa tela - ou seja para dispositivos com no minimo de largura de 500px (com de 500px para cima) -  faça isso
+40em = 40 *16px = 640px
+body {
+    Especificar  IMPORTANTE !!! caso contrario não funciona
+    background-color: black;
+  }*/
+@media (min-width: 700px) {
+  body {
+    padding: 8rem;
+  }
+
+  main {
+    max-width: 1020px; /*Pq neste caso estabelecemos uma largura fixa, ou seja quando chegarmos em 1020px ele para de crescer*/
+    display: flex;
+    gap: 10rem;
+  }
+
+  main > div {
+    /*Ou seja pegar o primeiro nivel de div dentro do main*/
+    max-width: 484px;
+  }
+
+  ul li {
+    gap: 5.3rem;
+    max-width: 450px;
+    align-items: center;
+  }
+}
+
+/*
+ * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Epilogue', sans-serif;
+  width: 1440px;
+  margin: auto;
+
+  background: #ece9fd;
+}
+.page {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 80px 300px 100px 140px;
+}
+
+header {
+  padding-bottom: 80px;
+}
+
+h5 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+
+  color: #7158ef;
+
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  margin-bottom: 18px;
+}
+
+h1 {
+  width: 484px;
+
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #090039;
+
+  margin-bottom: 32px;
+}
+
+p {
+  width: 484px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+
+  margin-bottom: 28px;
+
+  color: rgba(10, 0, 57, 0.64);
+}
+
+a {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+
+  color: #090039;
+
+  text-decoration: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+
+  color: #090039;
+
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+ul li span {
+  width: 50px;
+  height: 80px;
+
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 80px;
+
+  margin-right: 66px;
+}
+*/
